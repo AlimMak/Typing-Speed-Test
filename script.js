@@ -58,6 +58,7 @@ const newButton = document.getElementById("newTestButton");
 const textInput = document.getElementById("typingInput");
 const sentenceDisplay = document.getElementById("sentenceDisplay");
 const timerDisplay = document.getElementById("Timer");
+const resetButton = document.getElementById("resetButton");
 
 // Game state
 let currentSentence = "";
@@ -67,6 +68,7 @@ let startTime;
 
 // Initialize
 newButton.addEventListener("click", newSentence);
+resetButton.addEventListener("click", resetCurrent);
 textInput.addEventListener("input", handleInput);
 textInput.addEventListener("paste", preventPaste);
 textInput.addEventListener("drop", preventPaste);
@@ -135,6 +137,7 @@ function newSentence() {
         newSpan.textContent = char;
         sentenceDisplay.appendChild(newSpan);
     }
+    textInput.focus();
 }
 
 
@@ -176,6 +179,16 @@ function getWPM(){
 
 function preventPaste(e){
     e.preventDefault();
+}
+
+function resetCurrent(){
+    timerStarted = false;
+    stopTimer()
+    textInput.disabled = false;
+    textInput.value = "";
+    timerDisplay.textContent = 0;
+    highlightCharacters();
+    textInput.focus();
 }
 
 
