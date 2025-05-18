@@ -1,0 +1,13 @@
+.fullProgram{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+#typingInput{
+    width: 50vw;
+    
+}
+

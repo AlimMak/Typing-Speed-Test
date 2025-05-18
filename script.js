@@ -129,6 +129,7 @@ function newSentence() {
     // Create spans for each character
     for (let char of currentSentence) {
         const newSpan = document.createElement("span");
+        newSpan.classList.add("letterSpans");
         newSpan.textContent = char;
         sentenceDisplay.appendChild(newSpan);
     }
@@ -165,10 +166,16 @@ function stopTimer() {
 }
 
 
+function getWPM(){
+    let WPM = 0;
+
+    return WPM
+}
 
 
 
-injectSpans();
+
+//injectSpans();
 
 
 
