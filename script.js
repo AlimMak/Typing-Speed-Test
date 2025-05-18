@@ -68,6 +68,8 @@ let startTime;
 // Initialize
 newButton.addEventListener("click", newSentence);
 textInput.addEventListener("input", handleInput);
+textInput.addEventListener("paste", preventPaste);
+textInput.addEventListener("drop", preventPaste);
 newSentence(); // Start with a random sentence
 
 function handleInput() {
@@ -170,6 +172,10 @@ function getWPM(){
     let WPM = 0;
 
     return WPM
+}
+
+function preventPaste(e){
+    e.preventDefault();
 }
 
 
