@@ -83,6 +83,7 @@ function handleInput() {
     if (textInput.value === currentSentence) {
         stopTimer();
         textInput.disabled = true;
+        getWPM();
         highlightCharacters(); // Optional: visual feedback
     } else {
         highlightCharacters(); // Update character highlighting
@@ -157,7 +158,7 @@ function startTimer() {
     
     intervalId = setInterval(() => {
         const elapsed = Math.floor((Date.now() - startTime) / 1000);
-        timerDisplay.textContent = elapsed;
+        timerDisplay.textContent = elapsed + "s";
     }, 1000);
 }
 
@@ -172,9 +173,12 @@ function stopTimer() {
 
 
 function getWPM(){
+    console.log(currentSentence.length);
     let WPM = 0;
-
-    return WPM
+    time = parseInt(timerDisplay.textContent) / 60;
+    WPM = Math.round(((currentSentence.length) / 5) / time);
+    console.log(WPM);
+    document.getElementById("WPM").textContent = "WPM " + WPM;
 }
 
 function preventPaste(e){
@@ -194,7 +198,7 @@ function resetCurrent(){
 
 
 
-//injectSpans();
+
 
 
 
