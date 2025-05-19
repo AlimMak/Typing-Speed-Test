@@ -139,6 +139,7 @@ function newSentence() {
         sentenceDisplay.appendChild(newSpan);
     }
     textInput.focus();
+    document.getElementById("WPM").textContent = "WPM ";
 }
 
 
@@ -193,6 +194,7 @@ function resetCurrent(){
     timerDisplay.textContent = 0;
     highlightCharacters();
     textInput.focus();
+    document.getElementById("WPM").textContent = "WPM ";
 }
 
 

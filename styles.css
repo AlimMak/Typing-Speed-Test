@@ -2,16 +2,77 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(15, 23, 42);
 }
-
-
 
 #typingInput{
     width: 50vw;
-    
+    background-color: rgb(30, 41, 59);
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 2em;
+    border: none;
+    border-radius: 10px;
 }
 
 #sentenceDisplay{
     width: 50vw;
-    
+}
+
+#sentenceDisplay{
+    color: rgb(255, 255, 255);
+    font-family: "Inter";
+    font-size: 2em;
+}
+
+.titleText{
+    font-family: "Inter";
+    color: rgb(255, 255, 255);
+}
+
+#Timer{
+    font-family: "Inter";
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    align-items: center;
+}
+
+#WPM{
+    font-family: "Inter";
+    color: rgb(255, 255, 255);
+}
+/*
+#resetButton{
+    font-family: "Inter";
+    color: rgb(255, 255, 255);
+}
+
+#resetButton:hover{
+    cursor: pointer;
+}
+*/ 
+.material-symbols-outlined{
+    color: rgb(255, 255, 255);
+    font-size: 48px;
+}
+
+.material-symbols-outlined:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: 1.2s;
+}
+
+.chevron-icon{
+    color: rgb(255, 255, 255);
+    font-size: 48px;
+}
+
+.changeButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
