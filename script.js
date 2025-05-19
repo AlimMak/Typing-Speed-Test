@@ -34,7 +34,6 @@ const typingTestSentences = [
     "The waves were crashing on the shore; it was a lovely sight.",
     "The clock within this blog and the clock on my laptop are not synchronized.",
     "Let me help you with your baggage while we wait for the taxi.",
-    "Last Friday in three week's time I saw a spotted striped blue worm shake hands with a legless lizard.",
     "The beauty of the sunset was obscured by the industrial cranes.",
     "I think I will buy the red car, or I will lease the blue one.",
     "The old apple revels in its authority as it falls from the tree.",
@@ -48,9 +47,9 @@ const typingTestSentences = [
     "He told us a very exciting adventure story during dinner.",
     "Italy is my favorite country; in fact, I plan to spend two weeks there next year.",
     "The secret code they created was impossible to crack.",
-    "He didn't want to go to the dentist, yet he went anyway."
+    "He didn't want to go to the dentist, yet he went anyway.",
+    "An apple day has great nutritional value for your body. "
 ];
-
 
 
 // DOM elements
@@ -72,7 +71,7 @@ resetButton.addEventListener("click", resetCurrent);
 textInput.addEventListener("input", handleInput);
 textInput.addEventListener("paste", preventPaste);
 textInput.addEventListener("drop", preventPaste);
-newSentence(); // Start with a random sentence
+newSentence(); // start with sentence loaded
 
 function handleInput() {
     if (!timerStarted) {
@@ -84,9 +83,9 @@ function handleInput() {
         stopTimer();
         textInput.disabled = true;
         getWPM();
-        highlightCharacters(); // Optional: visual feedback
+        highlightCharacters(); 
     } else {
-        highlightCharacters(); // Update character highlighting
+        highlightCharacters(); 
     }
 }
 
@@ -96,46 +95,45 @@ function highlightCharacters() {
     const input = textInput.value;
     
     spans.forEach((span, index) => {
-        // Reset all spans first
-        span.style.color = "";
-        span.style.backgroundColor = "";
+        span.className = "letterSpans";
         
         // Highlight current character
         if (index < input.length) {
-            span.style.color = input[index] === currentSentence[index] 
-                ? "green" 
-                : "red";
-            
-            // Optional: highlight background for wrong characters
-            if (input[index] !== currentSentence[index]) {
-                span.style.backgroundColor = "#ffdddd";
-            }
+            span.classList.add(input[index] === currentSentence[index] ? "correct" : "wrong");
+        }
+        
+        // Highlight the current position
+        if (index === input.length) {
+            span.classList.add("current");
         }
     });
 }
-
+ 
 function getSentence(){
     return typingTestSentences[Math.trunc(Math.random() * typingTestSentences.length)]
 }
 
 function newSentence() {
-    // Reset game state
+    // Reset
     if (timerStarted) {
         stopTimer();
     }
     textInput.value = "";
     textInput.disabled = false;
     timerDisplay.textContent = "0";
-    
-    // Get and display new sentence
+
+    // new sentence
     currentSentence = getSentence();
     sentenceDisplay.innerHTML = ""; // Clear previous
-    
-    // Create spans for each character
+
+    // make spans for each character
     for (let char of currentSentence) {
         const newSpan = document.createElement("span");
         newSpan.classList.add("letterSpans");
         newSpan.textContent = char;
+        if (char === " ") {  //  <-------  Add this check
+            newSpan.classList.add("space"); //  <-------  Add this line
+        }
         sentenceDisplay.appendChild(newSpan);
     }
     textInput.focus();
